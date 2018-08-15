@@ -1,0 +1,19 @@
+{
+    "require": {
+        "bcosca/fatfree-core": "^3.6",
+        "firebase/php-jwt": "^5.0",
+        "vlucas/valitron": "^1.4",
+        "dompdf/dompdf": "^0.8.2",
+        "mailgun/mailgun-php": "^2.4",
+        "gabordemooij/redbean": "dev-master",
+        "phpunit/phpunit": "^6"
+    },
+    "scripts": {
+        "run" : ["php -S localhost:8080 -t ."],
+        "test": ["./vendor/phpunit/phpunit/phpunit test/AppTest.php"]
+    },
+    "config": {
+        "process-timeout":0
+    }
+
+}

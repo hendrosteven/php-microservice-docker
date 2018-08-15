@@ -1,0 +1,6 @@
+www/vendor/*
+www/composer.lock
+www/logs/*
+!www/logs/.gitkeep 
+
+
