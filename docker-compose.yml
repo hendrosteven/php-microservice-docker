@@ -11,6 +11,8 @@ services:
             - db:db
         networks:
             - default
+        mem_limit: 536870912 #512 MB (Memory is measured in bytes and the minimum memory is 4 MB)
+        cpu_shares: 100 #indicates 1 core
     db:
         image: mysql:5.7
         ports: 

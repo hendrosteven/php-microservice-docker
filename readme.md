@@ -30,3 +30,6 @@ Already integrated with
 - $ docker-compose logs ---> show logs
 - $ docker-compose scale www=3 ---> add more instance to www service
 
+# Monitor
+- $ docker container ls ---> list all running container
+- $ docker stats [container name]
