@@ -22,8 +22,8 @@ Already integrated with
 - $ git clone [repo url] [folder name]
 - $ cd [folder name]
 - $ docker-compose up --force-recreate --build
-- open your browser to access the api url at http://localhost:8080
-- open your browser to access phpmyadmin at http://localhost:8081
+- open your browser to access the api url at http://localhost
+- open your browser to access phpmyadmin at http://localhost:9090
 
 # Scale the API
 - $ docker-compose ps ---> show all running container
@@ -32,4 +32,5 @@ Already integrated with
 
 # Monitor
 - $ docker container ls ---> list all running container
-- $ docker stats [container name]
+- $ docker stats [container name] ---> container stat
+- $ docker stop rest-api-template_www_1  ---> stop a container

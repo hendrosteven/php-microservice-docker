@@ -4,7 +4,7 @@ services:
         build: .
         image: popbox/app-service
         ports: 
-            - 8080-8085:80
+            - 8081-8090:80
         volumes:
             - ./www:/var/www/html/
         links:
@@ -13,14 +13,25 @@ services:
             - default
         mem_limit: 536870912 #512 MB (Memory is measured in bytes and the minimum memory is 4 MB)
         cpu_shares: 100 #indicates 1 core
+        #labels:
+        #    - "traefik.frontend.rule=Host:localhost"
     lb:
         image: dockercloud/haproxy
         ports:
             - 80:80
+            - 1936:1936 # remove this on production (user=stats / pwd=stats)
         links:
             - www
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
+    #reverse-proxy:
+    #    image: traefik # The official Traefik docker image
+    #    command: --api --docker # Enables the web UI and tells Træfik to listen to docker
+    #    ports:
+    #        - "80:80"     # The HTTP port
+    #        - "8080:8080" # The Web UI (enabled by --api)
+    #    volumes:
+    #        - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
     db:
         image: mysql:5.7
         ports: 
@@ -40,7 +51,7 @@ services:
         links: 
             - db:db
         ports:
-            - 8081:80
+            - 9090:80
         environment:
             MYSQL_USER: root
             MYSQL_PASSWORD: root
