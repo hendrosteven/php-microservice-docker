@@ -2,7 +2,7 @@ version: "2"
 services:
     www:
         build: .
-        image: app-service
+        image: popbox/app-service
         ports: 
             - 8080-8085:80
         volumes:
@@ -13,6 +13,14 @@ services:
             - default
         mem_limit: 536870912 #512 MB (Memory is measured in bytes and the minimum memory is 4 MB)
         cpu_shares: 100 #indicates 1 core
+    lb:
+        image: dockercloud/haproxy
+        ports:
+            - 80:80
+        links:
+            - www
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
     db:
         image: mysql:5.7
         ports: 
