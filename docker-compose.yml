@@ -19,7 +19,7 @@ services:
         image: dockercloud/haproxy
         ports:
             - 80:80
-            - 1936:1936 # remove this on production (user=stats / pwd=stats)
+            - 1936:1936 # statistic dashboard localhost:1936, remove this on production (user=stats / pwd=stats)
         links:
             - www
         volumes:
