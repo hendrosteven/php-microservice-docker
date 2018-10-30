@@ -38,4 +38,9 @@ class ProductService extends BaseServiceReadBean{
         return true;
     }
 
+    function findAll(){
+        $product =  R::findAll( 'products' );
+        return $product;
+    }
+
 }

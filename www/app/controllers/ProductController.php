@@ -19,6 +19,7 @@ class ProductController extends SecureRoute{
         $v->rule('required', ['Code','Name','Price']);   
 
         if ($v->validate()) {
+            $this->cache->delete('ALL_PRODUCT');
             $this->data = [
                 'success'=> true, 
                 'payload'=> $this->productSvr->save($code, $name, $description, $price)
@@ -38,4 +39,22 @@ class ProductController extends SecureRoute{
             'payload' => $this->productSvr->find($id)
         ];
     }
+
+    function findAll(){
+        if(!$this->cache->get('ALL_PRODUCT')){
+            $products = $this->productSvr->findAll();
+            $this->cache->set('ALL_PRODUCT', $products);
+
+            $this->data = [
+                'success' => true,
+                'payload' => $products
+            ];
+        }else{
+            $this->data = [
+                'success' => true,
+                'payload' => $this->cache->get('ALL_PRODUCT')
+                ];
+        }
+    }
+
 }

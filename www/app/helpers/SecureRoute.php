@@ -52,6 +52,7 @@ class SecureRoute extends BaseRoute{
         $request_body = file_get_contents('php://input');
         $this->logger->write('[REQUEST PATH] '. $url);
         $this->logger->write('[DATA] '.$request_body);
+        $this->start = $this->microtime_float();
 
         $token = $this->getBearerToken();
         if(isset($token)){
