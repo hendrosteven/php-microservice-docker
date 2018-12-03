@@ -1,4 +1,3 @@
-Used internally in
 [![PopBox](https://res.cloudinary.com/crunchbase-production/image/upload/v1439273613/ldo5vmwztskapyr7tpyn.png)](https://popbox.asia)
 
 # RestAPI or Microservices Template
